@@ -5,13 +5,8 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Liberation Mono:pixelsize=12:antialias=true:autohint=true";
-/* Spare fonts */
-static char *font2[] = {
-/*	"Inconsolata for Powerline:pixelsize=12:antialias=true:autohint=true", */
-/*	"Hack Nerd Font Mono:pixelsize=11:antialias=true:autohint=true", */
-};
-
+static char *font = "Fira Code:pixelsize=17:antialias=true:autohint=true";
+static char *font2[] = { "JoyPixels:pixelsize=17:antialias=true:autohint=true" };
 static int borderpx = 2;
 
 /*
@@ -100,38 +95,33 @@ char *termname = "st-256color";
 unsigned int tabspaces = 8;
 
 /* bg opacity */
-float alpha = 0.8;
+float alpha = 1.0;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
-	/* 8 normal colors */
-	"black",
-	"red3",
-	"green3",
-	"yellow3",
-	"blue2",
-	"magenta3",
-	"cyan3",
-	"gray90",
-
-	/* 8 bright colors */
-	"gray50",
-	"red",
-	"green",
-	"yellow",
-	"#5c5cff",
-	"magenta",
-	"cyan",
-	"white",
-
-	[255] = 0,
-
-	/* more colors can be added after 255 to use with DefaultXX */
-	"#cccccc",
-	"#555555",
-	"black",
+        "#282828", /* hard contrast: #1d2021 / soft contrast: #32302f */
+        "#cc241d",
+        "#98971a",
+        "#d79921",
+        "#076678",//"#458588",
+        "#b16286",
+        "#689d6a",
+        "#a89984",
+        "#928374",
+        "#fb4934",
+        "#b8bb26",
+        "#fabd2f",
+        "#458588",//"#83a598",
+        "#d3869b",
+        "#8ec07c",
+        "#ebdbb2",
+        [255] = 0,
+        /* more colors can be added after 255 to use with DefaultXX */
+        "#add8e6", /* 256 -> cursor */
+        "#555555", /* 257 -> rev cursor*/
+        "#282828", /* 258 -> bg */
+        "#ebdbb2", /* 259 -> fg */
 };
-
 
 /*
  * Default colors (colorname index)
@@ -195,7 +185,9 @@ static MouseShortcut mshortcuts[] = {
 
 /* Internal keyboard shortcuts. */
 #define MODKEY Mod1Mask
-#define TERMMOD (ControlMask|ShiftMask)
+#define TERMMOD (Mod1Mask|ShiftMask)
+
+static char *stsamedir[] = { "st", "-d", ".", NULL };
 
 static Shortcut shortcuts[] = {
 	/* mask                 keysym          function        argument */
