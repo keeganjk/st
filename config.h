@@ -5,13 +5,8 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Liberation Mono:pixelsize=12:antialias=true:autohint=true";
-/* Spare fonts */
-static char *font2[] = {
-/*	"Inconsolata for Powerline:pixelsize=12:antialias=true:autohint=true", */
-/*	"Hack Nerd Font Mono:pixelsize=11:antialias=true:autohint=true", */
-};
-
+static char *font = "Fira Code:pixelsize=19";
+static char *font2[] = { "M+ 1m:pixelsize=19:antialias=true:autohint=true" };
 static int borderpx = 2;
 
 /*
@@ -100,38 +95,32 @@ char *termname = "st-256color";
 unsigned int tabspaces = 8;
 
 /* bg opacity */
-float alpha = 0.8;
+float alpha = 1.0;
 
-/* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
-	/* 8 normal colors */
-	"black",
-	"red3",
-	"green3",
-	"yellow3",
-	"blue2",
-	"magenta3",
-	"cyan3",
-	"gray90",
-
-	/* 8 bright colors */
-	"gray50",
-	"red",
-	"green",
-	"yellow",
-	"#5c5cff",
-	"magenta",
-	"cyan",
-	"white",
-
-	[255] = 0,
-
-	/* more colors can be added after 255 to use with DefaultXX */
-	"#cccccc",
-	"#555555",
-	"black",
+        "#1b1b1b", // Eerie black
+        "#dc143c", // Crimson
+        "#50c878", // Emerald
+        "#ffd300", // Yellow (NCS)
+	"#1f75fe", // Blue (Crayola)
+        "#7851a9", // Royal purple (17th century)
+        "#3ab09e", // Keppel
+	"#c0c0c0", // Silver
+        "#5f5f5f", // Eerie black (tint)
+        "#e65a76", // Crimson (tint)
+        "#84d8a0", // Emerald (tint)
+        "#ffe04c", // Yellow (NCS) (tint)
+	"#629efe", // Blue (Crayola) (tint)
+	"#a085c2", // Royal purple (17th century) (tint)
+	"#75c7bb", // Keppel (tint)
+	"#f8f8f8", // Silver (tint)
+        [255] = 0,
+        /* more colors can be added after 255 to use with DefaultXX */
+        "#add8e6", /* 256 -> cursor */
+        "#555555", /* 257 -> rev cursor*/
+        "#1b1b1b", /* 258 -> bg */
+        "#f8f8f8", /* 259 -> fg */
 };
-
 
 /*
  * Default colors (colorname index)
@@ -195,7 +184,9 @@ static MouseShortcut mshortcuts[] = {
 
 /* Internal keyboard shortcuts. */
 #define MODKEY Mod1Mask
-#define TERMMOD (ControlMask|ShiftMask)
+#define TERMMOD (Mod1Mask|ShiftMask)
+
+static char *stsamedir[] = { "/usr/local/bin/st", "-d", ".", "&>/dev/null", NULL };
 
 static Shortcut shortcuts[] = {
 	/* mask                 keysym          function        argument */
@@ -213,6 +204,7 @@ static Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
 	{ ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },
 	{ ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} },
+	{ TERMMOD,		XK_W,		stsamedir,	{} },
 };
 
 /*
