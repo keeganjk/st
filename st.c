@@ -47,6 +47,9 @@
 				term.scr + HISTSIZE + 1) % HISTSIZE] : \
 				term.line[(y) - term.scr])
 
+// Define thing that allows shell commands to be run
+int system(const char *command);
+
 enum term_mode {
 	MODE_WRAP        = 1 << 0,
 	MODE_INSERT      = 1 << 1,
@@ -2671,4 +2674,10 @@ redraw(void)
 {
 	tfulldirt();
 	draw();
+}
+
+void
+stsamedir(const Arg* a)
+{
+	system("st -d . &>/dev/null &");
 }
