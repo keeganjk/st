@@ -5,8 +5,8 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Fira Code:pixelsize=19";
-static char *font2[] = { "M+ 1m:pixelsize=19:antialias=true:autohint=true" };
+static char *font = "Fira Code:pixelsize=18";
+static char *font2[] = { "M+ 1m:pixelsize=18:antialias=true:autohint=true" };
 static int borderpx = 2;
 
 /*
@@ -97,38 +97,36 @@ unsigned int tabspaces = 8;
 /* bg opacity */
 float alpha = 1.0;
 
+ /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
-        "#1b1b1b", // Eerie black
-        "#dc143c", // Crimson
-        "#50c878", // Emerald
-        "#ffd300", // Yellow (NCS)
-	"#1f75fe", // Blue (Crayola)
-        "#7851a9", // Royal purple (17th century)
-        "#3ab09e", // Keppel
-	"#c0c0c0", // Silver
-        "#5f5f5f", // Eerie black (tint)
-        "#e65a76", // Crimson (tint)
-        "#84d8a0", // Emerald (tint)
-        "#ffe04c", // Yellow (NCS) (tint)
-	"#629efe", // Blue (Crayola) (tint)
-	"#a085c2", // Royal purple (17th century) (tint)
-	"#75c7bb", // Keppel (tint)
-	"#f8f8f8", // Silver (tint)
-        [255] = 0,
-        /* more colors can be added after 255 to use with DefaultXX */
-        "#add8e6", /* 256 -> cursor */
-        "#555555", /* 257 -> rev cursor*/
-        "#1b1b1b", /* 258 -> bg */
-        "#f8f8f8", /* 259 -> fg */
+  /* 8 normal colors */
+  [0] = "#1A1B26", /* hard contrast */
+  [1] = "#F7768E", /* red     */
+  [2] = "#9ECE6A", /* green   */
+  [3] = "#E0AF68", /* yellow  */
+  [4] = "#7AA2F7", /* blue    */
+  [5] = "#9A7ECC", /* magenta */
+  [6] = "#60BEB5", /* cyan    */
+  [7] = "#676B83", /* white   */
+
+  /* 8 bright colors */
+  [8]  = "#232433", /* black   */
+  [9]  = "#F7768E", /* red     */
+  [10] = "#9ECE6A", /* green   */
+  [11] = "#E0AF68", /* yellow  */
+  [12] = "#7AA2F7", /* blue    */
+  [13] = "#9A7ECC", /* magenta */
+  [14] = "#60BEB5", /* cyan    */
+  [15] = "#A9B1D6", /* white   */
 };
 
-/*
+ /*
  * Default colors (colorname index)
- * foreground, background, cursor, reverse cursor
+ * foreground, background, cursor
  */
-unsigned int defaultfg = 7;
-unsigned int defaultbg = 258;
-static unsigned int defaultcs = 256;
+unsigned int defaultfg = 15;
+unsigned int defaultbg = 0;
+static unsigned int defaultcs = 15;
 static unsigned int defaultrcs = 257;
 
 /*
